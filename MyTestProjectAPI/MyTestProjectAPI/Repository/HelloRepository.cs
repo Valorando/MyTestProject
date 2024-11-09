@@ -1,6 +1,11 @@
-﻿namespace MyTestProjectAPI.Repository
+﻿using MyTestProjectAPI.Interfaces;
+namespace MyTestProjectAPI.Repository
 {
-    public class HelloRepository
+    public class HelloRepository : IHelloRepository
     {
+        public string Hello()
+        {
+            return "Hello repository";
+        }
     }
 }

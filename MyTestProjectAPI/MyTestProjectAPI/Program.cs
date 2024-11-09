@@ -1,5 +1,6 @@
 using MyTestProjectAPI.Interfaces;
 using MyTestProjectAPI.Services;
+using MyTestProjectAPI.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +16,7 @@ namespace MyTestProjectAPI
             // Add services to the container.
             builder.Services.AddControllers();
             builder.Services.AddScoped<ITestService, TestService>();
+            builder.Services.AddScoped<IHelloRepository, HelloRepository>();
 
             // Add authorization services
             builder.Services.AddAuthorization();
