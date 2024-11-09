@@ -1,15 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MyTestProjectAPI.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyTestProjectAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TestController : Controller
+    public class TestController : ControllerBase
     {
-        [HttpGet("hello")]
-        public IActionResult GetHelloWorld()
+        private readonly ITestService _newService;
+
+        public TestController(ITestService newService)
         {
-            return Ok("Hello World");
+            _newService = newService;
+        }
+
+        [HttpGet]
+        public IActionResult GetMessage()
+        {
+            var message = _newService.GetMessage();
+            return Ok(message);
         }
     }
 }
